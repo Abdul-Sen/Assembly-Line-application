@@ -29,7 +29,7 @@ Item::Item(std::string & record)
 	}
 }
 
-const std::string & Item::getName() const
+const std::string& Item::getName() const
 {
 	return name;
 }
