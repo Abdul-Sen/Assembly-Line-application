@@ -21,15 +21,29 @@ void Task::RunProcess(std::ostream & os)
 	}
 }
 
-bool Task::MoveTask()
-{
+//bool Task::MoveTask()
+//{
+//	if (Orders.empty())
+//		return false;
+//
+//	//moving last order to pNextTask which should hold the next task
+//	if (Orders.back().getOrderFillState() == true)
+//		*pNextTask += std::move(Orders.back());
+//	// pNextTask->getCompleted(Orders.back()); //TODO: I think this is not how you move order to the next task
+//}
+
+bool Task::MoveTask() {
 	if (Orders.empty())
 		return false;
+	else
+	{
+		return false;
+	}
 
-	//moving last order to pNextTask which should hold the next task
-	if (Orders.back().getOrderFillState() == true)
-		*pNextTask += std::move(Orders.back());
-	// pNextTask->getCompleted(Orders.back()); //TODO: I think this is not how you move order to the next task
+	if (Orders.back().getItemFillState(this->getName()) == true)
+	{
+		pNextTask->Orders.push_front(std::move(Orders.back()));
+	}
 }
 
 void Task::setNextTask(Task & NextTaskObj)

@@ -23,7 +23,7 @@ LineManager::LineManager(std::string & fileName, std::vector<Task*>& tasks, std:
 	{
 		//setup
 		CustomerOrder_Count = custToBeFilled.size();
-		for (int i = 0; i < custToBeFilled.size(); i++)
+		for (int i = 0; i < custToBeFilled.size(); i++) //int works because vector has an overloaded [] opeartor. Otherwise use auto or iterator
 		{
 			ToBeFilled.push_back(std::move(custToBeFilled[i]));
 			//ToBeFilled[i].Display(std::cout);
@@ -84,17 +84,48 @@ LineManager::LineManager(std::string & fileName, std::vector<Task*>& tasks, std:
 
 }
 
+
 bool LineManager::Run(std::ostream & os)
 {
-	if (!ToBeFilled.empty())
+	static int temp = 0; //TEMP
+	if(!ToBeFilled.empty())
 	{
-		for (auto& currentOrder : ToBeFilled)
+		// Setting customerOrder to the start of assebmlyLine
+		*AssemblyLine[0] += std::move(ToBeFilled.back()); //TODO: change it to .back()
+
+		//looping over tasks and running the process on each task
+		for (auto currentAssembly : AssemblyLine)
 		{
-			for (auto& currentTask : AssemblyLine)
-			{
-				currentTask->getCompleted(currentOrder);
-			}
+			currentAssembly->RunProcess(os);
 		}
+
+		//looping 
+		for (auto currentAssembly : AssemblyLine)
+		{
+			currentAssembly->MoveTask();
+		}
+		temp++;
+			if (temp == 5)
+				return true;
+		//if (ToBeFilled.back().getOrderFillState() == true)
+		//{
+		//	this->Completed.push_back(std::move(ToBeFilled.back()));
+		//}
 	}
 	return false;
 }
+//bool LineManager::Run(std::ostream & os)
+//{
+//	if (!ToBeFilled.empty())
+//	{
+//		for (auto& currentOrder : ToBeFilled)
+//		{
+//			for (auto& currentTask : AssemblyLine)
+//			{
+//				if(//items are same)
+//				currentTask->getCompleted(currentOrder);
+//			}
+//		}
+//	}
+//	return false;
+//}
