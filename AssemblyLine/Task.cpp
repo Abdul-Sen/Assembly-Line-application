@@ -8,7 +8,6 @@ Task::Task(std::string & record) : Item(record)
 
 void Task::RunProcess(std::ostream & os)
 {
-
 	//checking if there are customer orders in queue
 	if (!Orders.empty())
 	{
@@ -29,21 +28,22 @@ void Task::RunProcess(std::ostream & os)
 //	//moving last order to pNextTask which should hold the next task
 //	if (Orders.back().getOrderFillState() == true)
 //		*pNextTask += std::move(Orders.back());
-//	// pNextTask->getCompleted(Orders.back()); //TODO: I think this is not how you move order to the next task
 //}
 
 bool Task::MoveTask() {
 	if (Orders.empty())
 		return false;
-	else
-	{
-		return false;
-	}
 
 	if (Orders.back().getItemFillState(this->getName()) == true)
 	{
-		pNextTask->Orders.push_front(std::move(Orders.back()));
+		if (pNextTask)
+		{
+			*pNextTask += std::move(Orders.back());
+			Orders.pop_back();
+			return true;
+		}
 	}
+
 }
 
 void Task::setNextTask(Task & NextTaskObj)
@@ -56,6 +56,7 @@ bool Task::getCompleted(CustomerOrder & src)
 	if (this->Orders.empty())
 		return false;
 	src = std::move(Orders.back());
+	Orders.pop_back();
 	return true;
 }
 
@@ -71,5 +72,3 @@ Task & Task::operator+=(CustomerOrder && srcOrder)
 	this->Orders.push_front(std::move(srcOrder)); //TODO: Build error here
 	return *this;
 }
-
-

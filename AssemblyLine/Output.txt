@@ -38,3 +38,44 @@ Micro Controller
 [0] GPU - MISSING
 [0] Power Supply - MISSING
 [0] SSD - MISSING
+Filled Chris T., Micro Controller [Power Supply] 
+Filled Mary-Lynn M., Desktop PC [Power Supply] 
+Filled Chris T., Micro Controller [GPU] 
+Filled Chris T., Micro Controller [GPU] 
+Filled Chris S., Laptop [Power Supply] 
+Filled Mary-Lynn M., Desktop PC [CPU] 
+Filled Elliott C., Gaming PC [Power Supply] 
+Filled Chris S., Laptop [CPU] 
+Filled Mary-Lynn M., Desktop PC [Memory] 
+Filled Elliott C., Gaming PC [CPU] 
+Filled Chris S., Laptop [Memory] 
+Filled Elliott C., Gaming PC [GPU] 
+Filled Elliott C., Gaming PC [GPU] 
+Filled Elliott C., Gaming PC [GPU] 
+Filled Elliott C., Gaming PC [Memory] 
+Chris T.
+Micro Controller
+[456789] GPU
+[456790] GPU
+[147852] Power Supply
+[0] SSD - MISSING
+Mary-Lynn M.
+Desktop PC
+[123458] CPU
+[654321] Memory
+[147853] Power Supply
+Chris S.
+Laptop
+[123459] CPU
+[654322] Memory
+[0] SSD - MISSING
+[147854] Power Supply
+Elliott C.
+Gaming PC
+[123460] CPU
+[654323] Memory
+[456791] GPU
+[456792] GPU
+[456793] GPU
+[0] SSD - MISSING
+[147855] Power Supply
