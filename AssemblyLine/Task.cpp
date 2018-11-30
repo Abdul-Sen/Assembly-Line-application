@@ -20,16 +20,6 @@ void Task::RunProcess(std::ostream & os)
 	}
 }
 
-//bool Task::MoveTask()
-//{
-//	if (Orders.empty())
-//		return false;
-//
-//	//moving last order to pNextTask which should hold the next task
-//	if (Orders.back().getOrderFillState() == true)
-//		*pNextTask += std::move(Orders.back());
-//}
-
 bool Task::MoveTask() {
 	if (Orders.empty())
 		return false;
@@ -69,6 +59,6 @@ void Task::Validate(std::ostream & os)
 
 Task & Task::operator+=(CustomerOrder && srcOrder)
 {
-	this->Orders.push_front(std::move(srcOrder)); //TODO: Build error here
+	this->Orders.push_front(std::move(srcOrder));
 	return *this;
 }
