@@ -133,7 +133,7 @@ void CustomerOrder::Display(std::ostream & os)
 		}
 		else
 		{
-			os << std::endl;
+			os <<" - FILLED" << std::endl;
 		}
 	}
 }

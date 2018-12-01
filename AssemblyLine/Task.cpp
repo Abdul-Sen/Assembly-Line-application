@@ -38,7 +38,7 @@ bool Task::MoveTask() {
 
 void Task::setNextTask(Task & NextTaskObj)
 {
-	pNextTask = &NextTaskObj; //TODO: Check if this is how you set a pointer to a reference
+	pNextTask = &NextTaskObj; 
 }
 
 bool Task::getCompleted(CustomerOrder & src)
