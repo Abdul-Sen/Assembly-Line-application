@@ -11,11 +11,11 @@ Item::Item(std::string & record)
 	size_t position = 0;
 	try {
 		this->name = temp.extractToken(record, position, mybool);
+		if (this->field_width < temp.getFieldWidth())
+			this->field_width = temp.getFieldWidth();
 		this->serialNumber = std::stoi(temp.extractToken(record, position, mybool));
 		this->Quantity = std::stoi(temp.extractToken(record, position, mybool));
 		this->description = temp.extractToken(record, position, mybool);
-		if (this->field_width < temp.getFieldWidth())
-			this->field_width = temp.getFieldWidth();
 	}
 	catch (char const* error)
 	{
@@ -56,9 +56,8 @@ void Item::display(std::ostream & os, bool full) const
 	if (this->serialNumber != 0)
 	{
 		os << this->name;
-		os.setf(std::ios::right);
-		//os.width(this->field_width);//really trying to put a square through a cylinder
-		os.width(5);
+
+		os.width(this->field_width - name.length());
 		os << " [" << this->serialNumber << "] ";
 		if (full)
 		{
